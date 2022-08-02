@@ -1,0 +1,152 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../img/background.webp") no-repeat center center;
+  background-size: cover;
+}
+
+.main {
+  width: 80%;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 9px;
+}
+
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 15px 30px;
+  border: 1px solid mediumturquoise;
+  border-radius: 9px;
+}
+
+.topSection h1 {
+  color: #fb5252;
+  letter-spacing: 2px;
+}
+
+.topSection button {
+  padding: 5px 10px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  background-color: #29916f;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.topSection button:hover {
+  transform: scale(1.1);
+}
+
+.playField {
+  padding: 10px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.cardWrap {
+  width: 20%;
+
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 175px;
+  padding: 2px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center right;
+  transition: transform 1s;
+}
+
+.card.flipped {
+  transform: translateX(-100%) rotateY(-180deg);
+}
+
+.cardFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  line-height: 1;
+  text-align: center;
+  font-weight: bold;
+  font-size: 150px;
+  backface-visibility: hidden;
+  border-radius: 9px;
+}
+
+.cardFaceFront {
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #000;
+}
+
+.cardFaceBack {
+  background: rgba(255, 255, 255, 0.95) url("../img/card-background.jpg")
+    no-repeat center center;
+  background-size: contain;
+  border: 1px solid #fff;
+  transform: rotateY(180deg);
+}
+
+.winMessage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.winMessage .wrap {
+  text-align: center;
+}
+
+.winMessage .wrap p {
+  font-size: 84px;
+  color: #fb5252;
+  margin-bottom: 30px;
+}
+
+.winMessage .wrap button {
+  padding: 5px 10px;
+  font-size: 18px;
+  background-color: #fb5252;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.winMessage .wrap button:hover {
+  transform: scale(1.1);
+}
+
+.p-events-none {
+  pointer-events: none;
+}
