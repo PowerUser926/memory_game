@@ -68,9 +68,13 @@ let difficultSwitcher = document.querySelector(".switcherPoint");
 
 let selectDifficult = "";
 
+let time = 0;
+let timer;
+let timerEl = document.querySelector(".timer");
+
 setDifficult("easy");
 function setDifficult(difficult) {
-  if (selectDifficult != difficult) {
+  if (selectDifficult !== difficult) {
     selectDifficult = difficult;
   } else {
     return;
@@ -85,6 +89,27 @@ function setDifficult(difficult) {
     figures = hardLevel;
     prepareGame();
   }
+}
+
+function setTimer() {
+  time = 45;
+  timerEl.innerHTML = `${time}`;
+  timerEl.style.color = "#138cf3";
+  timerEl.style.display = "block";
+
+  timer = setInterval(() => {
+    timerEl.innerHTML = `${time}`;
+
+    if (time > 5) {
+      timerEl.style.color = "#138cf3";
+      time--;
+    } else if (time > 0 && time <= 5) {
+      timerEl.style.color = "#fb5252";
+      time--;
+    } else {
+      finishGame();
+    }
+  }, 1000);
 }
 
 function prepareGame() {
@@ -167,17 +192,26 @@ function startGame() {
       showCard(card);
     });
   });
+
+  if (selectDifficult === "hard") {
+    setTimer();
+  } else {
+    timerEl.style.display = "none";
+  }
 }
 
 function finishGame() {
   action = "restart";
   cards = document.querySelectorAll(".card");
 
+  clearInterval(timer);
+
   setTimeout(() => {
     loseMessage.style.display = "flex";
   }, 300);
   setTimeout(() => {
     loseMessage.style.display = "none";
+    timerEl.style.display = "none";
 
     cards.forEach((card) => {
       card.classList.remove("flipped");
@@ -251,6 +285,8 @@ function checkSuccessfulAttempts() {
     successfulAttempts = 0;
     setTimeout(() => {
       winMessage.style.display = "flex";
+      clearInterval(timer);
+      timerEl.style.display = 'none';
     }, 500);
   }
 }

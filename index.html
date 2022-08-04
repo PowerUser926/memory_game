@@ -13,16 +13,20 @@
       <div class="topSection">
         <h1>Game "MEMORY"</h1>
 
-        <div class="difficulty">
-          <span class="easy" onclick="setDifficult('easy')">EASY</span>
-          <div class="switcher">
-            <div class="switcherPoint"></div>
-          </div>
-          <span class="hard" onclick="setDifficult('hard')">HARD</span>
-        </div>
+        <span class="timer"></span>
 
-        <div style="width: 100px; text-align: center">
-          <button class="startBtn">Start</button>
+        <div style="display: flex">
+          <div class="difficulty">
+            <span class="easy" onclick="setDifficult('easy')">EASY</span>
+            <div class="switcher">
+              <div class="switcherPoint"></div>
+            </div>
+            <span class="hard" onclick="setDifficult('hard')">HARD</span>
+          </div>
+
+          <div style="width: 155px; text-align: right">
+            <button class="startBtn">Start</button>
+          </div>
         </div>
       </div>
 
